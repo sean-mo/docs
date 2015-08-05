@@ -1,143 +1,345 @@
-# 欢迎使用马克飞象
+# MacDown
 
-@(示例笔记本)[马克飞象|帮助|Markdown]
+![MacDown logo](http://macdown.uranusjr.com/static/base/img/logo-160.png)
 
-**马克飞象**是一款专为印象笔记（Evernote）打造的Markdown编辑器，通过精心的设计与技术实现，配合印象笔记强大的存储和同步功能，带来前所未有的书写体验。特点概述：
- 
-- **功能丰富** ：支持高亮代码块、*LaTeX* 公式、流程图，本地图片以及附件上传，甚至截图粘贴，工作学习好帮手；
-- **得心应手** ：简洁高效的编辑器，提供桌面[离线客户端][1]，支持移动端 Web；
-- **深度整合** ：支持选择笔记本和添加标签，支持从印象笔记跳转编辑，轻松管理。
+Hello there! I’m **MacDown**, the open source Markdown editor for OS X.
 
--------------------
+Let me introduce myself.
 
-[TOC]
 
-## Markdown简介
 
-> Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— [维基百科](https://zh.wikipedia.org/wiki/Markdown)
+## Markdown and I
 
-正如您在阅读的这份文档，它使用简单的符号标识不同的标题，将某些文字标记为**粗体**或者*斜体*，创建一个[链接](http://www.example.com)或一个脚注[^demo]。下面列举了几个高级功能，更多语法请按`Ctrl + /`查看帮助。 
+**Markdown** is a plain text formatting syntax created by John Gruber, aiming to provide a easy-to-read and feasible markup. The original Markdown syntax specification can be found [here](http://daringfireball.net/projects/markdown/syntax).
 
-### 代码块
-``` python
-@requires_authorization
-def somefunc(param1='', param2=0):
-    '''A docstring'''
-    if param1 > param2: # interesting
-        print 'Greater'
-    return (param2 - param1 + 1) or None
-class SomeClass:
-    pass
->>> message = '''interpreter
-... prompt'''
+**MacDown** is created as a simple-to-use editor for Markdown documents. I render your Markdown contents real-time into HTML, and display them in a preview panel.
+
+![MacDown Screenshot](http://d.pr/i/10UGP+)
+
+I support all the original Markdown syntaxes. But I can do so much more! Various popular but non-standard syntaxes can be turned on/off from the [**Markdown** preference pane](#markdown-pane).
+
+You can specify extra HTML rendering options through the [**Rendering** preference pane](#rendering-pane).
+
+You can customize the editor window to you liking in the [**Editor** preferences pane](#editor-pane):
+
+You can configure various application (that's me!) behaviors in the [**General** preference pane](#general-pane).
+
+## The Basics
+Before I tell you about all the extra syntaxes and capabilities I have, I'll introduce you to the basics of standard markdown. If you already know markdown, and want to jump straight to learning about the fancier things I can do, I suggest you skip to the [**Markdown** preference pane](#markdown-pane). Lets jump right in.  
+
+### Line Breaks
+To force a line break, put two spaces and a newline (return) at the end of the line.
+
+	These lines
+	won't break
+
+	These lines  
+	will break
+
+
+### Strong and Emphasize
+
+**Strong**: `**Strong**` or `__Strong__` (Command-B)  
+*Emphasize*: `*Emphasize*` or `_Emphasize_`[^emphasize] (Command-I)
+
+### Headers (like this one!)
+
+	Header 1
+	========
+
+	Header 2
+	--------
+
+or
+
+	# Header 1
+	## Header 2
+	### Header 3
+	#### Header 4
+	##### Header 5
+	###### Header 6
+
+
+
+### Links and Email
+#### Inline
+Just put angle brackets around an email and it becomes clickable: <uranusjr@gmail.com>  
+`<uranusjr@gmail.com>`  
+
+Same thing with urls: <http://macdown.uranusjr.com>  
+` <http://macdown.uranusjr.com>`  
+
+Perhaps you want to some link text like this: [Macdown Website](http://macdown.uranusjr.com "Title")  
+`[Macdown Website](http://macdown.uranusjr.com "Title")` (The title is optional)  
+
+
+#### Reference style
+Sometimes it looks too messy to include big long urls inline, or you want to keep all your urls together.  
+
+Make [a link][arbitrary_id] `[a link][arbitrary_id]` then on it's own line anywhere else in the file:  
+`[arbitrary_id]: http://macdown.uranusjr.com "Title"`
+  
+If the link text itself would make a good id, you can link [like this][] `[like this][]`, then on it's own line anywhere else in the file:  
+`[like this]: http://macdown.uranusjr.com`  
+
+[arbitrary_id]: http://macdown.uranusjr.com "Title"
+[like this]: http://macdown.uranusjr.com  
+
+
+### Images
+#### Inline
+`![Alt Image Text](path/or/url/to.jpg "Optional Title")`
+#### Reference style
+`![Alt Image Text][image-id]`  
+on it's own line elsewhere:  
+`[image-id]: path/or/url/to.jpg "Optional Title"`
+
+
+### Lists
+
+* Lists must be preceded by a blank line (or block element)
+* Unordered lists start each item with a `*`
+- `-` works too
+	* Indent a level to make a nested list
+		1. Ordered lists are supported.
+		2. Start each item (number-period-space) like `1. `
+		3. It doesn't matter what number you use, I will render them sequentially
+		4. So you might want to start each line with `1.` and let me sort it out
+
+Here is the code:
+
 ```
-### LaTeX 公式
-
-可以创建行内公式，例如 $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$。或者块级公式：
-
-$$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
-
-### 表格
-| Item      |    Value | Qty  |
-| :-------- | --------:| :--: |
-| Computer  | 1600 USD |  5   |
-| Phone     |   12 USD |  12  |
-| Pipe      |    1 USD | 234  |
-
-### 流程图
-```flow
-st=>start: Start
-e=>end
-op=>operation: My Operation
-cond=>condition: Yes or No?
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
+* Lists must be preceded by a blank line (or block element)
+* Unordered lists start each item with a `*`
+- `-` works too
+	* Indent a level to make a nested list
+		1. Ordered lists are supported.
+		2. Start each item (number-period-space) like `1. `
+		42. It doesn't matter what number you use, I will render them sequentially
+		1. So you might want to start each line with `1.` and let me sort it out
 ```
 
-以及时序图:
 
-```sequence
-Alice->Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
+
+### Block Quote
+
+> Angle brackets `>` are used for block quotes.  
+Technically not every line needs to start with a `>` as long as
+there are no empty lines between paragraphs.  
+> Looks kinda ugly though.
+> > Block quotes can be nested.  
+> > > Multiple Levels
+>
+> Most markdown syntaxes work inside block quotes.
+>
+> * Lists
+> * [Links][arbitrary_id]
+> * Etc.
+
+Here is the code:
+
+```
+> Angle brackets `>` are used for block quotes.  
+Technically not every line needs to start with a `>` as long as
+there are no empty lines between paragraphs.  
+> Looks kinda ugly though.
+> > Block quotes can be nested.  
+> > > Multiple Levels
+>
+> Most markdown syntaxes work inside block quotes.
+>
+> * Lists
+> * [Links][arbitrary_id]
+> * Etc.
+```
+  || *Year* || *Temperature (low)* || *Temperature (high)* ||
+|| 1900 || -10 || 25 ||
+|| 1910 || -15 || 30 ||
+|| 1920 || -10 || 32 ||
+  
+### Inline Code
+`Inline code` is indicated by surrounding it with backticks:  
+`` `Inline code` ``
+
+If your ``code has `backticks` `` that need to be displayed, you can use double backticks:  
+```` ``Code with `backticks` `` ````  (mind the spaces preceding the final set of backticks)
+
+
+### Block Code
+If you indent at least four spaces or one tab, I'll display a code block.
+
+	print('This is a code block')
+	print('The block must be preceded by a blank line')
+	print('Then indent at least 4 spaces or 1 tab')
+		print('Nesting does nothing. Your code is displayed Literally')
+
+I also know how to do something called [Fenced Code Blocks](#fenced-code-block) which I will tell you about later.
+
+### Horizontal Rules
+If you type three asterisks `***` or three dashes `---` on a line, I'll display a horizontal rule:
+
+***
+
+
+## <a name="markdown-pane"></a>The Markdown Preference Pane
+This is where I keep all preferences related to how I parse markdown into html.  
+![Markdown preferences pane](http://d.pr/i/RQEi+)
+
+### Document Formatting
+The ***Smartypants*** extension automatically transforms straight quotes (`"` and `'`) in your text into typographer’s quotes (`“`, `”`, `‘`, and `’`) according to the context. Very useful if you’re a typography freak like I am. Quote and Smartypants are syntactically incompatible. If both are enabled, Quote takes precedence.
+
+
+### Block Formatting
+
+#### Table
+
+This is a table:
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+You can align cell contents with syntax like this:
+
+| Left Aligned  | Center Aligned  | Right Aligned |
+|:------------- |:---------------:| -------------:|
+| col 3 is      | some wordy text |         $1600 |
+| col 2 is      | centered        |           $12 |
+| zebra stripes | are neat        |            $1 |
+
+The left- and right-most pipes (`|`) are only aesthetic, and can be omitted. The spaces don’t matter, either. Alignment depends solely on `:` marks.
+
+#### <a name="fenced-code-block">Fenced Code Block</a>
+
+This is a fenced code block:
+
+```
+print ('Hello world!)'
 ```
 
-> **提示：**想了解更多，请查看**流程图**[语法][2]以及**时序图**[语法][3]。
+You can also use waves (`~`) instead of back ticks (`` ` ``):
 
-### 复选框
-
-使用 `- [ ]` 和 `- [x]` 语法可以创建复选框，实现 todo-list 等功能。例如：
-
-- [x] 已完成事项
-- [ ] 待办事项1
-- [ ] 待办事项2
-
-> **注意：**目前支持尚不完全，在印象笔记中勾选复选框是无效、不能同步的，所以必须在**马克飞象**中修改 Markdown 原文才可生效。下个版本将会全面支持。
+~~~
+print('Hello world!')
+~~~
 
 
-## 印象笔记相关
+You can add an optional language ID at the end of the first line. The language ID will only be used to highlight the code inside if you tick the ***Enable highlighting in code blocks*** option. This is what happens if you enable it:
 
-### 笔记本和标签
-**马克飞象**增加了`@(笔记本)[标签A|标签B]`语法, 以选择笔记本和添加标签。 **绑定账号后**， 输入`(`自动会出现笔记本列表，请从中选择。
+![Syntax highlighting example](http://d.pr/i/9HM6+)
 
-### 笔记标题
-**马克飞象**会自动使用文档内出现的第一个标题作为笔记标题。例如本文，就是第一行的 `欢迎使用马克飞象`。
-
-### 快捷编辑
-保存在印象笔记中的笔记，右上角会有一个红色的编辑按钮，点击后会回到**马克飞象**中打开并编辑该笔记。
->**注意：**目前用户在印象笔记中单方面做的任何修改，马克飞象是无法自动感知和更新的。所以请务必回到马克飞象编辑。
-
-### 数据同步
-**马克飞象**通过**将Markdown原文以隐藏内容保存在笔记中**的精妙设计，实现了对Markdown的存储和再次编辑。既解决了其他产品只是单向导出HTML的单薄，又规避了服务端存储Markdown带来的隐私安全问题。这样，服务端仅作为对印象笔记 API调用和数据转换之用。
-
- >**隐私声明：用户所有的笔记数据，均保存在印象笔记中。马克飞象不存储用户的任何笔记数据。**
-
-### 离线存储
-**马克飞象**使用浏览器离线存储将内容实时保存在本地，不必担心网络断掉或浏览器崩溃。为了节省空间和避免冲突，已同步至印象笔记并且不再修改的笔记将删除部分本地缓存，不过依然可以随时通过`文档管理`打开。
-
-> **注意：**虽然浏览器存储大部分时候都比较可靠，但印象笔记作为专业云存储，更值得信赖。以防万一，**请务必经常及时同步到印象笔记**。
-
-## 编辑器相关
-### 设置
-右侧系统菜单（快捷键`Ctrl + M`）的`设置`中，提供了界面字体、字号、自定义CSS、vim/emacs 键盘模式等高级选项。
-
-### 快捷键
-
-帮助    `Ctrl + /`
-同步文档    `Ctrl + S`
-创建文档    `Ctrl + Alt + N`
-最大化编辑器    `Ctrl + Enter`
-预览文档 `Ctrl + Alt + Enter`
-文档管理    `Ctrl + O`
-系统菜单    `Ctrl + M` 
-
-加粗    `Ctrl + B`
-插入图片    `Ctrl + G`
-插入链接    `Ctrl + L`
-提升标题    `Ctrl + H`
-
-## 关于收费
-
-**马克飞象**为新用户提供 10 天的试用期，试用期过后需要[续费](maxiang.info/vip.html)才能继续使用。未购买或者未及时续费，将不能同步新的笔记。之前保存过的笔记依然可以编辑。
+I support many popular languages as well as some generic syntax descriptions that can be used if your language of choice is not supported. See [relevant sections on the official site](http://macdown.uranusjr.com/features/) for a full list of supported syntaxes.
 
 
-## 反馈与建议
-- 微博：[@马克飞象](http://weibo.com/u/2788354117)，[@GGock](http://weibo.com/ggock "开发者个人账号")
-- 邮箱：<hustgock@gmail.com>
+### Inline Formatting
 
----------
-感谢阅读这份帮助文档。请点击右上角，绑定印象笔记账号，开启全新的记录与分享体验吧。
+The following is a list of optional inline markups supported:
+
+Option name         | Markup           | Result if enabled     |
+--------------------|------------------|-----------------------|
+Intra-word emphasis | So A\*maz\*ing   | So A<em>maz</em>ing   |
+Strikethrough       | \~~Much wow\~~   | <del>Much wow</del>   |
+Underline [^under]  | \_So doge\_      | <u>So doge</u>        |
+Quote [^quote]      | \"Such editor\"  | <q>Such editor</q>    |
+Highlight           | \==So good\==    | <mark>So good</mark>  |
+Superscript         | hoge\^(fuga)     | hoge<sup>fuga</sup>   |
+Autolink            | http://t.co      | <http://t.co>         |
+Footnotes           | [\^4] and [\^4]: | [^4] and footnote 4   |
+
+[^4]: You don't have to use a number. Arbitrary things like `[^footy note4]` and `[^footy note4]:` will also work. But they will *render* as numbered footnotes. Also, no need to keep your footnotes in order, I will sort out the order for you so they appear in the same order they were referenced in the text body. You can even keep some footnotes near where you referenced them, and collect others at the bottom of the file in the traditional place for footnotes. 
 
 
 
 
-[^demo]: 这是一个示例脚注。请查阅 [MultiMarkdown 文档](https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#footnotes) 关于脚注的说明。 **限制：** 印象笔记的笔记内容使用 [ENML][4] 格式，基于 HTML，但是不支持某些标签和属性，例如id，这就导致`脚注`和`TOC`无法正常点击。
+## <a name="rendering-pane"></a>The Rendering Preference Pane
+This is where I keep preferences relating to how I render and style the parsed markdown in the preview window.  
+![Rendering preferences pane](http://d.pr/i/rT4d+)
+
+### CSS
+You can choose different css files for me to use to render your html. You can even customize or add your own custom css files.
+
+### Syntax Highlighting
+You have already seen how I can syntax highlight your fenced code blocks. See the [Fenced Code Block](#fenced-code-block) section if you haven’t! You can also choose different themes for syntax highlighting.
+
+### TeX-like Math Syntax
+I can also render TeX-like math syntaxes, if you allow me to.[^math] I can do inline math like this: \\( 1 + 1 \\) or this (in MathML): <math><mn>1</mn><mo>+</mo><mn>1</mn></math>, and block math:
+
+\\[
+    A^T_S = B
+\\]
+
+or (in MathML)
+
+<math display="block">
+    <msubsup><mi>A</mi> <mi>S</mi> <mi>T</mi></msubsup>
+    <mo>=</mo>
+    <mi>B</mi>
+</math>
 
 
-  [1]: https://chrome.google.com/webstore/detail/kidnkfckhbdkfgbicccmdggmpgogehop
-  [2]: http://adrai.github.io/flowchart.js/
-  [3]: http://bramp.github.io/js-sequence-diagrams/
-  [4]: https://dev.yinxiang.com/doc/articles/enml.php
+
+### Task List Syntax
+1. [x] I can render checkbox list syntax
+	* [x] I support nesting
+	* [x] I support ordered *and* unordered lists
+2. [ ] I don't support clicking checkboxes directly in the html window
+
+
+### Jekyll front-matter
+If you like, I can display Jekyll front-matter in a nice table. Just make sure you put the front-matter at the very beginning of the file, and fence it with `---`. For example:
+
+```
+---
+title: "Macdown is my friend"
+date: 2014-06-06 20:00:00
+---
+```
+
+### Render newline literally
+Normally I require you to put two spaces and a newline (aka return) at the end of a line in order to create a line break. If you like, I can render a newline any time you end a line with a newline. However, if you enable this, markdown that looks lovely when I render it might look pretty funky when you let some *other* program render it.
+
+
+
+
+
+## <a name="general-pane"></a>The General Preferences Pane
+
+This is where I keep preferences related to application behavior.  
+![General preferences pane](http://d.pr/i/rvwu+)
+
+The General Preferences Pane allows you to tell me how you want me to behave. For example, do you want me to make sure there is a document open when I launch? You can also tell me if I should constantly update the preview window as you type, or wait for you to hit `command-R` instead. Maybe you prefer your editor window on the right? Or to see the word-count as you type. This is also the place to tell me if you are interested in pre-releases of me, or just want to stick to better-tested official releases.  
+
+## <a name="editor-pane"></a>The Editor Preference Pane
+This is where I keep preferences related to the behavior and styling of the editing window.  
+![Editor preferences pane](http://d.pr/i/6OL5+)
+
+
+### Styling
+
+My editor provides syntax highlighting. You can edit the base font and the coloring/sizing theme. I provided some default themes (courtesy of [Mou](http://mouapp.com)’s creator, Chen Luo) if you don’t know where to start.
+
+You can also edit, or even add new themes if you want to! Just click the ***Reveal*** button, and start moving things around. Remember to use the correct file extension (`.styles`), though. I’m picky about that.
+
+I offer auto-completion and other functions to ea**====**se your editing experience. If you don’t like it, however, you can turn them off.
+
+
+
+
+
+## Hack On
+
+That’s about it. Thanks for listening. I’ll be quiet from now on (unless there’s an update about the app—I’ll remind you for that!).
+
+Happy writing!
+
+
+[^emphasize]: If **Underlines** is turned on, `_this notation_` will render as underlined instead of emphasized 
+
+[^under]: If **Underline** is disabled `_this_` will be rendered as *emphasized* instead of being underlined.
+
+[^quote]: **Quote** replaces literal `"` characters with html `<q>` tags. **Quote** and **Smartypants** are syntactically incompatible. If both are enabled, **Quote** takes precedence. Note that **Quote** is different from *blockquote*, which is part of standard Markdown.
+
+[^math]: Internet connection required.
+
 
