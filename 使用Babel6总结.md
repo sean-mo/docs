@@ -3,7 +3,7 @@
 babel6，较上一版本，做了很多拆分。把babel做成一个容器，拆分原有的自带ES6的功能，更名为ES2015，估计后续会有ES2016等等。导致很多伸手党、百度党等等纷纷中招，以致出现相当多的坑。硬生生的把我缩回到了babel5.8。在此不推荐大伙在生产环境用。
 
 ## babel环境安装与配置
-首先，Babel6在npm3.0以前体积相当大（约300M左右），因为依赖库重复安装量太大，建议升级node版本至5.1，npm默认就会升级到3.x。（window安装成功后，每次npm install插件会有相当多的进度条）
+首先，Babel6在npm3.0以前体积相当大（约300M左右），因为依赖库重复安装量太大，建议升级node版本至5.x，npm默认就会升级到3.x。（window安装成功后，每次npm install插件会有相当多的进度条）
 
 第一步，安装核心库
 
@@ -26,7 +26,7 @@ npm install babel-preset-es2015
 FAQ：
 
 - transform-runtime 内部引用了 babel-runtime，绝大部分扩展出自于babel-runtime
-- babel-runtime引用在babel6下，会有引起symbol/async等扩展库缺失的bug，所以ES6类型扩展在babel6下的bug，目前最新的babel-runtime6.18及其以前是有问题的（2015.12.5） 
+- babel-runtime部署在babel6下，会有引起symbol/async等ES6类型扩展对应的函数缺失的bug，另外：目前最新的babel-runtime6.18及其以前是有问题的（2015.12.5） 
 
 ```
 npm install babel-plugin-transform-runtime babel-runtime
@@ -66,7 +66,11 @@ npm install babel-loader
 
 - node环境支持使用require来解析babel代码。
 - 方法是require('babel-register'). 注意：5.x是require('babel/register')
-- 需要安装babel-register(6.x)
+- 需要安装babel-register(6.x),6.0以下无须安装
+
+```
+npm install babel-register
+```
 
 7、最后一步，配置当前项目babel环境参数：
 
@@ -193,6 +197,6 @@ module: {
 - koa-react-full-example:https://github.com/dozoisch/koa-react-full-example
 
 
-最后编辑：2015.12.05
+最后编辑：2015.12.06
 
 
