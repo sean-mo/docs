@@ -57,7 +57,7 @@ npm install babel-preset-react
 ```
 5、babel-loader（选装）
 
-webpack-loader支持
+loader是提供webpack文件解析的外部插件，假如项目使用的是webpack，建议采用这个跑起来
 
 ```
 npm install babel-loader
