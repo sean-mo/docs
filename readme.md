@@ -1,6 +1,6 @@
 # 项目分享
 
-- [外包项目律师企业站(gulp+sass+postcss常用插件）- 2014](https://github.com/sean-mo/proceedings)
+- [外包项目律师企业站：gulp + sass。加了点postcss常用插件(但是未使用） - 2014](https://github.com/sean-mo/proceedings)
 
 # 2015年
 
