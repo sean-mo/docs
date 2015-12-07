@@ -13,4 +13,4 @@
 
 # 项目积累
 
-[Vue GM项目优化方案]()
+[Vue GM项目优化方案](https://github.com/sean-mo/docs/blob/master/optimize.md)(2015-12-07)
