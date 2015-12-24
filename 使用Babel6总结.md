@@ -195,7 +195,7 @@ module: {
 - babel+webpack+react0.14示例：https://github.com/ruanyf/react-babel-webpack-boilerplate
 - react-webpack-babel: https://github.com/alicoding/react-webpack-babel
 - koa-react-full-example:https://github.com/dozoisch/koa-react-full-example
-
+- react如何兼容IE8： https://github.com/xcatliu/react-ie8
 
 最后编辑：2015.12.06
 
