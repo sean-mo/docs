@@ -1,6 +1,7 @@
 
 # 项目分享
 
+- [开源一个基于vue+redux项目（删减版）](https://github.com/sean-mo/GM_VUE)
 - [14年机试时的一个移动端HTML5活动页 - 2014](https://github.com/sean-mo/lottery)
 
 # 2015年
