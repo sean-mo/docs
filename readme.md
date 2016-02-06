@@ -1,7 +1,7 @@
 
 # 项目分享
 
-- [14年机试时的一个APP小DEMO：gulp + sass - 2014](https://github.com/sean-mo/lottery)
+- [14年机试时的一个移动端HTML5活动页 - 2014](https://github.com/sean-mo/lottery)
 
 # 2015年
 
