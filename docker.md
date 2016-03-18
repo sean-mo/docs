@@ -136,7 +136,17 @@ docker commit -m='A new image' --author='Aomine' 614122c0aabb aoct/apache2
 
 `docker push user/test:latest`
 
+### 镜像导入与导出
+
+```
+// 镜像导入
+docker load < node.tar
+// 镜像导出
+docker save > node.tar
+```
+
 ## 容器
+
 
 参数：
 
@@ -204,6 +214,8 @@ docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry
 
 假如挂载的时候，不指定宿主机的地址，则自动挂载到/var/lib/docker/vfs/dir，以下是容器/data挂到本地
 
+##### 如果挂载的主机卷非本地卷，即sys(mac)，则有不会成功挂载到主机上 
+
 `docker run -it -v /data ce5`
 
 ```
@@ -242,7 +254,7 @@ docker run --rm -ti ce5
 ```
 
 
-## Docker node_modules
+## Docker node_modules 保存到镜像中
 
 - NODE_PATH
 - Ln -s 软链接
