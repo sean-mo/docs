@@ -244,7 +244,7 @@ docker run -it -p 127.0.0.0::5000
 docker run -it -p 5000:5000
 ```
 
-容器间通信
+### 容器间通信
 
 --name web: 自定义名称
 
@@ -253,6 +253,26 @@ docker run -it -p 5000:5000
 docker run --rm -ti ce5 
 ```
 
+### 容器连接
+> 使用 `--link` 参数，可以让容器之间安全的交互
+
+```
+// 使用方法: name 代表要链接的容器名，alias是这个链接的别名
+--link name:alias
+// 示例 启动容器，让db连接到web，同时执行 env
+docker run --link db:db -P -d --name=web webapp ecnode env 
+
+``` 
+- docker会通过两种方式公开连接信息
+	- 自动添加hosts文件信息到父容器，即db连接到web，则提供
+	`172.17.0.5 db`
+	- 添加以`DB_`开头的的环境变量，通过`env`访问
+	
+	```
+	DB_NAME=/web2/db
+	DB_PORT....
+	....
+	```
 
 ## Docker node_modules 保存到镜像中
 
