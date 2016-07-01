@@ -119,3 +119,82 @@ git fetch 相当于是从远程获取最新版本到本地，不会自动merge
 git commit -a -m "log_message" (-a是提交所有改动，-m是加入log信息) 本地修改同步至服务器端 ：
 I
 ```
+
+# Git Submodule
+
+```
+// 添加子模块
+git submodule add git://github.com/felixge/node-mysql.git deps/mysql
+// 获取依赖模块
+git submodule init
+// 更新依赖模块
+$ git submodule update
+// 获取 status 状态
+git submodule status
+// recursive 选项 自动初始化并更新仓库中的每一个子模块
+git clone --recursive https://github.com/chaconinc/MainProject
+// remote Git 将会进入子模块然后抓取并更新
+git submodule update --remote
+// -merge 服务器上的这个子模块有一个改动并且它被合并了进来
+git submodule update --remote --merge
+// rebase 本地做了更改时上游也有一个改动，我们需要将它并入本地。
+ git submodule update --remote --rebase
+// 推送到主项目前检查所有子模块是否已推送
+ git push --recurse-submodules=check
+// 尝试 推送子模块 那个子模块因为某些原因推送失败，主项目也会推送失败
+ git push --recurse-submodules=on-demand
+// 在每一个子模块中运行任意命令
+git submodule foreach 'git checkout -b featureA'
+git submodule foreach 'git stash'
+git submodule foreach 'git diff'
+```
+
+
+## SSHKEY生成
+
+> 生成一个SSHKEY
+
+```
+ssh-keygen -t rsa -C "xx@ooo.com"
+```
+> 会提示输入生成KEY文件的位置，一般我们都是多个sshkey，所以需要输入完整的路径，同时加_gitname。如 xx公司，则id_rsa_xx
+
+> Enter file in which to save the key (/Users/moruhang/.ssh/id_rsa)
+
+```
+/Users/yourname/.ssh/id_rsa_xx
+```
+* 剩下就可以一路回车，之后查看，显示密钥串
+
+```
+cat ~/.ssh/id_rsa_xx.pub
+```
+> 密钥串会显示类似下面的内容，请复制它们到gitlab或者github的SSHKEY里创建
+
+```
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmXVj4KCtMbvW17UUw+Yef2HjMoIrzpSV5RwRiEMFJtBArAzTRxY12OadNhJCKDJ4W1SKWK3Ji3pyX/Gm+MW/4flbAwmHNmilI8aSIXryy0MzHj9JKPrTJmXrdVGpncIiH8DdAaCOrZRmrBkH/54EkBcGev2xpbZJWpO23iLRJciu1UlaOESw8ertqokF5m4b+lYTQmk+pMBkNXYCa0qJxZsc7QkaPHmYsC2mAd/YitkdH43zxmtrHwzRAEieIYQsQZdpxjSWHlpykrj7dWKSHSACaHSWQrVSpjCkRBy8DJ5QAH39CUu8XVSr3O8P4+nv6oMPZJC4j3xIiZHIJMxw9 xx@ooo.com
+
+```
+> 在~/.ssh/下创建一个config， 如下
+
+```
+# gitlab
+Host gitlab.oooo.org
+    HostName gitlab.oooo.org
+    IdentityFile ~/.ssh/id_rsa_xx
+
+# github
+Host github.com
+    HostName github.com
+    IdentityFile ~/.ssh/id_rsa_github
+
+```
+> 验证是否成功
+
+```
+// xx@ooo.com 为你的帐号
+ssh -t xx@ooo.com 
+```
+### 参考文档：
+
+git submodule: https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
