@@ -2,7 +2,8 @@
 # 项目分享
 
 - [开源一个基于vue+redux项目（删减版）](https://github.com/sean-mo/GM_VUE)
-- [14年机试时的一个移动端HTML5活动页 - 2014](https://github.com/sean-mo/lottery)
+- [移动端HTML5活动页 - 2014](https://github.com/sean-mo/lottery)
+- [基于infernoJS+webpack2的微信页面](https://github.com/sean-mo/inferno-mobile)
 
 # 2015年
 
