@@ -5,6 +5,14 @@
 - [移动端HTML5活动页 - 2014](https://github.com/sean-mo/lottery)
 - [基于infernoJS+webpack2的微信页面](https://github.com/sean-mo/inferno-mobile)
 
+# 学习笔试
+
+- [docker](https://github.com/sean-mo/docs/blob/master/docker.md)
+- [Rxjs](https://github.com/sean-mo/docs/blob/master/rxjs.md)
+- [liunx](https://github.com/sean-mo/docs/blob/master/linux.md)
+- [Go](https://github.com/sean-mo/docs/blob/master/go.md)
+- [管理知识](https://github.com/sean-mo/docs/blob/master/ITmanagement.md)
+
 # 2015年
 
 - [haskell趣学指南小结](https://github.com/sean-mo/docs/blob/master/haskell_study.md)(2015/12/05-12/06)
