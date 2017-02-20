@@ -5,7 +5,7 @@
 - [移动端HTML5活动页 - 2014](https://github.com/sean-mo/lottery)
 - [基于infernoJS+webpack2的微信页面](https://github.com/sean-mo/inferno-mobile)
 
-# 学习笔试
+# 学习笔记
 
 - [docker](https://github.com/sean-mo/docs/blob/master/docker.md)
 - [Rxjs](https://github.com/sean-mo/docs/blob/master/rxjs.md)
